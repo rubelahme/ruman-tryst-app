@@ -49,7 +49,7 @@ const IdVerify = () => {
                       <div>
                         <a
                           className="btn btn-danger"
-                          href="https://www.google.com/"
+                          href="https://tryst.link/locations"
                           rel="noopener noreferrer"
                         >
                           <div className="fw-bold">
