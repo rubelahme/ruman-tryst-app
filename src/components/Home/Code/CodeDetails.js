@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 const CodeDetails = () => {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(true);
   const [show, setShow] = useState(true);
   const navigate = useNavigate();
 
@@ -65,8 +65,8 @@ const CodeDetails = () => {
                     </p>
                   </div>
                   <div>
-                    <span className="TOKEN">
-                      Emergency recovery code must be 12 characters
+                    <span className="EmergencyRecovery">
+                      Authenticate using authenticator app instead
                     </span>
                   </div>
                   <input
@@ -75,13 +75,9 @@ const CodeDetails = () => {
                     pattern="^-?[0-9]\d*\.?\d*$"
                     {...register("exampleRequired", {
                       required: true,
-                      pattern: {
-                        value: /^[0-9]+$/,
-                        message: "Please enter a number",
-                      },
                     })}
                     minLength={6}
-                    maxLength={6}
+                    maxLength={15}
                   />
                   <div>
                     <input
@@ -130,15 +126,11 @@ const CodeDetails = () => {
         <div className="row">
           <div className="col-md-12 pb-3">
             <div className="recovery">
-              {user ? (
-                <span className="using" onClick={() => setUser(false)}>
-                  Authenticate using emergency recovery code instead{" "}
-                </span>
-              ) : (
-                <span className="using">
-                  Authenticate using authenticator app instead{" "}
-                </span>
-              )}
+              <span className="using" onClick={() => setUser(!user)}>
+                Authenticate using
+                {user ? " emergency recovery code" : " authenticator app"}{" "}
+                instead
+              </span>
               <span className="instead">|</span>{" "}
               <span className="using"> Log out instead</span>
             </div>
